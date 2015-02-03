@@ -17,9 +17,7 @@
             } else {
                 $_item_style = '';
             }
-
         ?>
-
             <li id="<?php echo $_item_style; ?>"><a href ="<?php echo $_layoutParams['menu'][$i]['link']; ?>"><?php echo $_layoutParams['menu'][$i]['titulek']; ?></a></li>
         <?php endfor; ?>
         <?php endif; ?>
