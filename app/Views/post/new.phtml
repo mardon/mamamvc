@@ -1,0 +1,13 @@
+<?php if (isset($this->pokus)) echo ($this->pokus); ?>
+<p></p>
+<form id="form1" method="post" action="<?php echo BASE_URL; ?>/post/add">
+    <input type="hidden" name="guard" value="1">
+    <p>Title: <br/>
+    <input type="text" name="title" value="<?php if(isset($this->data['title'])) echo $this->data['title']; ?> "></p>
+
+    <p>Obsah: <br/>
+        <textarea name="post"><?php if(isset($this->data['post'])) echo $this->data['post']; ?> </textarea></p>
+
+    <input type="submit" class="button" value="Přidat">
+
+</form>
