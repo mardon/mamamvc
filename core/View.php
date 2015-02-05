@@ -25,13 +25,13 @@ class View
         );
 
         $_layoutParams = array(
-            'root_css' => BASE_URL. '/public/css/style.css',
-            'root_img' => BASE_URL. '/public/img/',
-            'root_js' => BASE_URL. '/public/js/',
+            'root_css' => BASE_URL. 'public/css/style.css',
+            'root_img' => BASE_URL. 'public/img/',
+            'root_js' => BASE_URL. 'public/js/',
             'menu' => $menu
         );
 
-        $routeView = ROOT . DS . 'app'. DS . 'views' .DS . $this->_controller . DS . $view . '.phtml';
+        $routeView = ROOT . 'app'. DS . 'views' . DS . $this->_controller . DS . $view . '.phtml';
 
         if(is_readable($routeView)) {
             include_once ROOT . DS . 'app'. DS . 'views' .DS . 'layout' . DS . DEFAULT_LAYOUT . DS. 'header.php';
