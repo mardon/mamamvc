@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <title><?php if (isset($this->title)) echo $this->title; ?></title>
     <link rel="stylesheet" href="<?php echo $_layoutParams['root_css']; ?>"/>
+    <script src="<?php echo BASE_URL; ?>public/js/jquery.js" type="text/javascript"></script>
+    <script src="<?php echo BASE_URL; ?>public/js/jquery.validate.js" type="text/javascript"></script>
+    <?php if(isset($_layoutParams['js']) && count($_layoutParams['js'])) : ?>
+    <?php for ($i = 0; $i < count($_layoutParams['js']); $i++): ?>
+    <script src="<?php echo $_layoutParams['js'][$i]; ?>" type="text/javascript"></script>
+    <?php endfor; ?>
+    <?php endif; ?>
 </head>
 <body>
     <h1><?php echo APP_NAME; ?></h1>
@@ -23,4 +30,5 @@
         <?php endif; ?>
     </div>
     <div id="content">
+        <noscript>Pro správnou funkci je vyžadován javascript</noscript>
         <div id="error"><?php if(isset($this->_error)) echo $this->_error; ?></div>

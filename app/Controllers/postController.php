@@ -20,6 +20,7 @@ class postController extends Controller
     public function add()
     {
         $this->_view->title = 'Nový post';
+        $this->_view->setJs(array('new'));
 
         if ($this->getInt('guard') == 1) {
             $this->_view->data = $_POST;
