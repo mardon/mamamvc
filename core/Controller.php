@@ -67,8 +67,8 @@ abstract class Controller
 
     protected function getPostParam($value)
     {
-        if(isset($_POST['value'])){
-            return $_POST['value'];
+        if(isset($_POST[$value])){
+            return $_POST[$value];
         }
     }
 
