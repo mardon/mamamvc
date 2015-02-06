@@ -15,6 +15,7 @@ require_once CORE_PATH . 'Model.php';
 require_once CORE_PATH . 'View.php';
 require_once CORE_PATH . 'Register.php';
 require_once CORE_PATH . 'Database.php';
+require_once CORE_PATH . 'Session.php';
 
 try {
     Bootstrap::run(new Request);

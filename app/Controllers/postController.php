@@ -38,8 +38,8 @@ class postController extends Controller
             }
 
             $this->_post->insertPost(
-                $this->getText('title'),
-                $this->getText('post')
+                $this->getPostParam('title'),
+                $this->getPostParam('post')
             );
 
             $this->redirect('post');
