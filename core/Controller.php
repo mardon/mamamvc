@@ -36,10 +36,6 @@ abstract class Controller
         }
     }
 
-    /**
-     * @param $value
-     * @return string
-     */
     protected function getText($value)
     {
         if(isset($_POST[$value]) && !empty($_POST[$value])) {
@@ -57,6 +53,23 @@ abstract class Controller
             return $_POST[$value];
         }
         return 0;
+    }
+
+    protected function filterInt($int)
+    {
+        $int = (int) $int;
+
+        if (is_int($int)) {
+            return $int;
+        }
+        else return 0;
+    }
+
+    protected function getPostParam($value)
+    {
+        if(isset($_POST['value'])){
+            return $_POST['value'];
+        }
     }
 
     public function redirect($route = false)

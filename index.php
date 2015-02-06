@@ -1,6 +1,7 @@
 <?php
 
 error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+ini_set('display_errors', '1');
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', realpath(dirname(__FILE__)) .  DS);
 define('CORE_PATH', ROOT. 'core'. DS);
