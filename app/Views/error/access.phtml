@@ -1,0 +1,12 @@
+<h2><?php if($this->message) echo $this->message; ?></h2>
+
+<p>&nbsp;</p>
+
+<a href="<?php echo BASE_URL; ?>">Homepage</a> |
+<a href="javascript:history.back(1)">Návrat na předchozí stránku</a>
+
+<?php if(!Session::get('authentication')): ?>
+
+    | <a href="<?php echo BASE_URL . 'login'; ?>">Homepage</a>
+
+<?php endif; ?>
