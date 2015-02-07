@@ -17,6 +17,8 @@ require_once CORE_PATH . 'Register.php';
 require_once CORE_PATH . 'Database.php';
 require_once CORE_PATH . 'Session.php';
 
+Session::init();
+
 try {
     Bootstrap::run(new Request);
 }
