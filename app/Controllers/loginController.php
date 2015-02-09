@@ -7,27 +7,24 @@ class loginController extends Controller
     }
 
     public function index () {
-        Session::set('authentication', true);
-        Session::set('level', 'user');
-        Session::set('time', time());
 
-        Session::set('var1', 'var1');
-        Session::set('var2', 'var2');
+        $this->_view->tile = "Přihlašení";
 
-        $this->redirect('login/mortar');
+        if ($this->getInt($enviar) == 1) {
+            $this->data = $_POST;
+            Session::set('authentication', true);
+            Session::set('level', 'user');
+            Session::set('time', time());
+        }
+
+        $this->_view->render('index','login');
+
     }
 
-    public function mortar()
-    {
-        echo 'Level: '.Session::get('level') . '<br>';
-        echo 'Var1: '.Session::get('var1') . '<br>';
-        echo 'Var2: '.Session::get('var2') . '<br>';
-        echo 'Authentication: '.Session::get('authentication') . '<br>';
-    }
 
     public function logout()
     {
         Session::destroy();
-        $this->redirect('login/mortar');
+        $this->redirect('');
     }
 }
