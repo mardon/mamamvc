@@ -19,7 +19,7 @@ class postController extends Controller
 
     public function add()
     {
-        Session::access('basic');
+        Session::accessRestrict(array('basic'));
 
         $this->_view->title = 'Nový post';
         $this->_view->setJs(array('new'));

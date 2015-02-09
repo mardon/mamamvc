@@ -8,7 +8,7 @@ class loginController extends Controller
 
     public function index () {
         Session::set('authentication', true);
-        Session::set('level', 'basic');
+        Session::set('level', 'special');
 
         Session::set('var1', 'var1');
         Session::set('var2', 'var2');
@@ -21,6 +21,7 @@ class loginController extends Controller
         echo 'Level: '.Session::get('level') . '<br>';
         echo 'Var1: '.Session::get('var1') . '<br>';
         echo 'Var2: '.Session::get('var2') . '<br>';
+        echo 'Authentication: '.Session::get('authentication') . '<br>';
     }
 
     public function logout()

@@ -18,5 +18,6 @@
     <p><strong>Nejsou žádné posty</strong></p>
 
 <?php endif; ?>
-
+<?php if(Session::accessViewRestrict(array('user'))): ?>
 <p><a href="<?php BASE_URL; ?>post/add">Přidat článek</a></p>
+<?php endif; ?>
