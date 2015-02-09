@@ -50,6 +50,8 @@ class Session
             exit;
         }
 
+        Session::time();
+
         if(Session::getLevel($level) > Session::getLevel(Session::get('level'))) {
             header('location:' .BASE_URL . 'error/access/5050');
             exit;
@@ -90,6 +92,8 @@ class Session
             exit;
         }
 
+        Session::time();
+
         if($noAdmin == false)
             if(Session::get('level') == 'admin') {
                 return;
@@ -123,4 +127,25 @@ class Session
 
         return false;
     }
+
+    public static function time()
+    {
+        if(!Session::get('time') || !defined('SESSION_TIME')) {
+            throw new Exception('Není definován čas pro session');
+        }
+
+        if (SESSION_TIME == 0) {
+            return;
+        }
+
+        if (time() - Session::get('time') > (SESSION_TIME * 60 )) {
+            Session::destroy();
+            header('location:' . BASE_URL . 'error/access/8080');
+            exit;
+        }
+        else {
+            Session::set('time', time());
+        }
+    }
+
 }

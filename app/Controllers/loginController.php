@@ -8,7 +8,8 @@ class loginController extends Controller
 
     public function index () {
         Session::set('authentication', true);
-        Session::set('level', 'special');
+        Session::set('level', 'user');
+        Session::set('time', time());
 
         Session::set('var1', 'var1');
         Session::set('var2', 'var2');

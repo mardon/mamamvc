@@ -7,6 +7,7 @@ define('DEFAULT_LAYOUT', 'default');
 define('APP_NAME','My framework');
 define('APP_SLOGAN','Nějaký slogan');
 define('APP_COMPANY', 'Moje kompany');
+define('SESSION_TIME',10);
 
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');

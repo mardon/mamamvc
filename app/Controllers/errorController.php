@@ -36,6 +36,7 @@ class errorController extends Controller
 
         $error['default'] = 'default error';
         $error['5050'] = 'Nepovolený přístup';
+        $error['8080'] = 'Vypšel čas session';
 
         if (array_key_exists($code, $error)) {
             return $error[$code];
