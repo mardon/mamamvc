@@ -83,4 +83,26 @@ abstract class Controller
             exit;
         }
     }
+
+    protected function getSql($clave)
+    {
+        if(isset($_POST[$clave]) && !empty($_POST[$clave])){
+            $_POST[$clave] = strip_tags($_POST[$clave]);
+
+            if(!get_magic_quotes_gpc()){
+                $_POST[$clave] = mysql_real_escape_string($_POST[$clave], mysql_connect(DB_HOST, DB_USER, DB_PASS));
+            }
+
+            return trim($_POST[$clave]);
+        }
+    }
+
+    protected function getAlphaNum($clave)
+    {
+        if(isset($_POST[$clave]) && !empty($_POST[$clave])){
+            $_POST[$clave] = (string) preg_replace('/[^A-Z0-9_]/i', '', $_POST[$clave]);
+            return trim($_POST[$clave]);
+        }
+
+    }
 }
