@@ -10,7 +10,7 @@ class loginModel extends Model
         $data = $this->_db->query(
             "select * from user " .
             "where user= '$user' " .
-            "and pass = '" . md5($password) . "'"
+            "and pass = '" . Hash::getHash('sha1', $password, HASH_KEY) . "'"
             );
 
         return $data->fetch();

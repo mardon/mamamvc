@@ -1,7 +1,8 @@
 <?php
 
-error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING ^ E_DEPRECATED);
 ini_set('display_errors', '1');
+
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', realpath(dirname(__FILE__)) .  DS);
 define('CORE_PATH', ROOT. 'core'. DS);
@@ -16,6 +17,9 @@ require_once CORE_PATH . 'View.php';
 require_once CORE_PATH . 'Register.php';
 require_once CORE_PATH . 'Database.php';
 require_once CORE_PATH . 'Session.php';
+require_once CORE_PATH . 'Hash.php';
+
+//echo Hash::getHash('sha1','fantomas',HASH_KEY);exit;
 
 Session::init();
 
