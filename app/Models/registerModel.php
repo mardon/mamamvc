@@ -32,6 +32,15 @@ class registerModel extends Model {
 
     public function registerUser ($name, $user, $password, $email)
     {
-
+         $this->_db->prepare(
+             "insert into user values" .
+             "(:null, :name, :user, :password , :email, 'user', 1, now())"
+            )
+             ->execute(array(
+                 ':name' => $name,
+                 ':user' => $user,
+                 ':password' => Hash::getHash('sha1', $password, HASH_KEY),
+                 ':email' => $email,
+             ));
     }
 }

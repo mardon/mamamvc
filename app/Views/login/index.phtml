@@ -1,18 +1,14 @@
 <h2>Login</h2>
-
 <form name="form1" method="post" action="">
     <input type="hidden" value="1" name="enviar"/>
-    
     <p>
         <label>User:</label>
         <input type="text" name="user" value="<?php if(isset($this->data)) echo $this->data['user']; ?>"/>
     </p>
-
     <p>
         <label>Password:</label>
         <input type="password" name="pass"/>
     </p>
-
     <p>
         <input type="submit" value="enviar"/>
     </p>

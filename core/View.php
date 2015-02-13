@@ -38,6 +38,12 @@ class View
                 'titulek' => 'Login',
                 'link' => BASE_URL . 'login'
             );
+
+            $menu[] = array(
+                'id' => 'register',
+                'titulek' => 'Register',
+                'link' => BASE_URL . 'register'
+            );
         }
 
         $js = array();
