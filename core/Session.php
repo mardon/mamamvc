@@ -71,7 +71,6 @@ class Session
     }
 
     public static function getLevel($level)
-
     {
         $role['admin'] = 3;
         $role['special'] = 2;

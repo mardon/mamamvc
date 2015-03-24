@@ -28,9 +28,9 @@ class View
 
         if(Session::get('authentication')) {
             $menu[] = array(
-                'id' => 'login',
-                'titulek' => 'Login',
-                'link' => BASE_URL . 'login/cerrar'
+                'id' => 'logout',
+                'titulek' => 'Logout',
+                'link' => BASE_URL . 'login/logout'
             );
         } else {
             $menu[] = array(

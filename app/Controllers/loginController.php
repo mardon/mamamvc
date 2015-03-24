@@ -10,6 +10,10 @@ class loginController extends Controller
 
     public function index () {
 
+        if(Session::get('authenticate')) {
+            $this->redirect();
+        }
+
         $this->_view->title = "Přihlašení";
 
         if ($this->getInt('enviar') == 1) {
@@ -56,7 +60,6 @@ class loginController extends Controller
         $this->_view->render('index','login');
 
     }
-
 
     public function logout()
     {

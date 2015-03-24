@@ -31,4 +31,10 @@
     </div>
     <div id="content">
         <noscript>Pro správnou funkci je vyžadován javascript</noscript>
-        <div id="error"><?php if(isset($this->_error)) echo $this->_error; ?></div>
+        <?php if(isset($this->_error)): ?>
+        <div id="error"><?php echo $this->_error; ?></div>
+        <?php endif; ?>
+
+        <?php if(isset($this->_message)): ?>
+        <div id="message"><?php echo $this->_message; ?></div>
+        <?php endif; ?>

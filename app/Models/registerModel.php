@@ -34,7 +34,7 @@ class registerModel extends Model {
     {
          $this->_db->prepare(
              "insert into user values" .
-             "(:null, :name, :user, :password , :email, 'user', 1, now())"
+             "(null, :name, :user, :password , :email, 'user', 1, now())"
             )
              ->execute(array(
                  ':name' => $name,
