@@ -60,6 +60,10 @@ class registerController extends Controller  {
                 exit;
             }
 
+            $this->getLibrary('class.phpmailer');
+            $mail = new PHPMailer();
+
+
             $this->_register->registerUser(
                 $this->getSql('name'),
                 $this->getAlphaNum('user'),
@@ -67,15 +71,74 @@ class registerController extends Controller  {
                 $this->getPostParam('email')
             );
 
-            if(!$this->_register->verifyUser($this->getAlphaNum('user'))) {
+            $user = $this->_register->verifyUser($this->getAlphaNum('user'));
+
+            if(!$user) {
                 $this->_view->_error = 'Registrace se nezdařila';
                 $this->_view->render('index', 'register');
                 exit;
             }
 
+            $mail->From = 'Test mvc';
+            $mail->FromName = 'Tutorial';
+            $mail->Subject = 'Aktivační mail';
+            $mail->Body = 'Ahoj <strong> '. $this->getSql('name') . '</strong>' .
+                            '<p>Registrace na webu prosím aktivujte</p>' .
+                            '<a href="'.BASE_URL .'register/activate/'.
+                            $user['id'] . '/' . $user['code'] . '">'.
+                            BASE_URL . 'register/activate/' .
+                            $user['id'] . '/' . $user['code'] . '</a>';
+            $mail->AltBody = 'mail je v html';
+            $mail->addAddress($this->getPostParam('email'));
+            $mail->send();
+
             $this->_view->data = false;
-            $this->_view->_message = 'Registrace provedena';
+            $this->_view->_message = 'Registrace provedena zkontrolujte si mail';
         }
         $this->_view->render('index', 'register');
+    }
+
+    public function activate($id, $code)
+    {
+        if(!$this->filterInt($id) || !$this->filterInt($code)) {
+            $this->_view->_error = 'Účet neexistuje';
+            $this->_view->render('activate', 'register');
+            exit;
+        }
+
+        $row = $this->_register->getUser(
+            $this->filterInt($id),
+            $this->filterInt(code)
+        );
+
+        if(!$row) {
+            $this->_view->_error = 'Účet neexistuje';
+            $this->_view->render('activate', 'register');
+            exit;
+        }
+
+        if(!$row['stav'] == 1) {
+            $this->_view->_error = 'Účet neexistuje';
+            $this->_view->render('activate', 'register');
+            exit;
+        }
+
+        $this->_register->activateUser(
+            $this->filterInt($id),
+            $this->filterInt(code)
+        );
+
+        $row = $this->_register->getUser(
+            $this->filterInt($id),
+            $this->filterInt(code)
+        );
+
+        if($row['stav'] == 0) {
+            $this->_view->_error = 'Chyba při aktivaci uživatele';
+            $this->_view->render('activate', 'register');
+            exit;
+        }
+
+        $this->_view->_message = 'Uživatel byl aktiviván';
     }
 }

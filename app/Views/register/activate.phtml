@@ -1,0 +1,5 @@
+<a href="<?php echo BASE_URL; ?>">Inicializace</a>
+
+<?php if(!Session::get('authenticate')): ?>
+    <a href="<?php echo BASE_URL; ?>Login">Přihlásit se</a>
+<?php endif; ?>

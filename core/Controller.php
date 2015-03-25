@@ -26,7 +26,7 @@ abstract class Controller
     }
 
     protected function getLibrary($lib) {
-        $rootlib =  ROOT . 'lib' . DS . 'lib' . DS . $lib . '.php';
+        $rootlib =  ROOT . 'lib' . DS . $lib . '.php';
 
         if (is_readable($rootlib)) {
             require_once $rootlib;
